@@ -43,9 +43,19 @@ if ("IntersectionObserver" in window) {
 }
 
 // Fotoband: klik op een foto om hem helemaal te zien, in een polaroid-lijst.
+// Met de pijlen (of de pijltjestoetsen) ga je naar de vorige of volgende foto.
 // Sluiten kan met een klik ergens op het scherm, met het kruisje of met Esc.
 var lichtbak = document.getElementById("lichtbak");
 var lichtbakFoto = document.getElementById("lichtbak-foto");
+var bandFotos = Array.prototype.slice.call(document.querySelectorAll(".band img"));
+var huidige = 0;
+
+function toonFoto(nummer) {
+  // Na de laatste foto weer terug naar de eerste, en andersom
+  huidige = (nummer + bandFotos.length) % bandFotos.length;
+  lichtbakFoto.src = bandFotos[huidige].src;
+  lichtbakFoto.alt = bandFotos[huidige].alt;
+}
 
 function sluitLichtbak() {
   if (!lichtbak) { return; }
@@ -54,18 +64,30 @@ function sluitLichtbak() {
 }
 
 if (lichtbak && lichtbakFoto) {
-  document.querySelectorAll(".band img").forEach(function (foto) {
+  bandFotos.forEach(function (foto, nummer) {
     foto.addEventListener("click", function () {
-      lichtbakFoto.src = foto.src;
-      lichtbakFoto.alt = foto.alt;
+      toonFoto(nummer);
       lichtbak.hidden = false;
       document.body.style.overflow = "hidden";
     });
   });
 
+  lichtbak.querySelector(".lichtbak-vorige").addEventListener("click", function (gebeurtenis) {
+    gebeurtenis.stopPropagation(); // niet sluiten
+    toonFoto(huidige - 1);
+  });
+
+  lichtbak.querySelector(".lichtbak-volgende").addEventListener("click", function (gebeurtenis) {
+    gebeurtenis.stopPropagation();
+    toonFoto(huidige + 1);
+  });
+
   lichtbak.addEventListener("click", sluitLichtbak);
 
   document.addEventListener("keydown", function (gebeurtenis) {
+    if (lichtbak.hidden) { return; }
     if (gebeurtenis.key === "Escape") { sluitLichtbak(); }
+    if (gebeurtenis.key === "ArrowLeft") { toonFoto(huidige - 1); }
+    if (gebeurtenis.key === "ArrowRight") { toonFoto(huidige + 1); }
   });
 }

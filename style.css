@@ -314,7 +314,7 @@ footer .voet-naam {
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background: rgba(30, 40, 30, 0.9);
+  background: var(--groen); /* het groen van de site */
   cursor: pointer;
 }
 
@@ -326,13 +326,14 @@ footer .voet-naam {
   background: #ffffff;
 }
 
+/* Grootte van de foto: pas de 70 aan voor een grotere of kleinere foto */
 .lichtbak-polaroid img {
   display: block;
   width: auto;
   height: auto;
-  max-width: calc(100vw - 2rem - 28px);
-  max-height: calc(100vh - 2rem - 62px);
-  max-height: calc(100svh - 2rem - 62px);
+  max-width: min(calc(100vw - 10rem - 28px), 900px);
+  max-height: calc(70vh - 62px);
+  max-height: calc(70svh - 62px);
 }
 
 .lichtbak-sluit {
@@ -346,6 +347,53 @@ footer .voet-naam {
   font-size: 2.4rem;
   line-height: 1;
   cursor: pointer;
+}
+
+/* Foto met de pijlen er vlak naast (op een telefoon: eronder).
+   Pijlen verder weg of dichterbij? Verander de gap hieronder. */
+.lichtbak-vak {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+/* Pijlen: bordeaux ring met een witte pijl */
+.lichtbak-pijl {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1.5px solid var(--bordeaux);
+  border-radius: 50%;
+  color: var(--wit);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.lichtbak-pijl:hover { color: var(--bordeaux); }
+
+/* Op een telefoon: foto bovenaan, de twee pijlen er direct onder */
+@media (max-width: 639px) {
+  .lichtbak-vak {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    gap: 1rem 1.2rem;
+  }
+
+  .lichtbak-polaroid {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .lichtbak-vorige { grid-row: 2; justify-self: end; }
+  .lichtbak-volgende { grid-row: 2; justify-self: start; }
+
+  .lichtbak-polaroid img { max-width: calc(100vw - 2rem - 28px); }
 }
 
 /* ---------- Wachtwoordscherm ---------- */

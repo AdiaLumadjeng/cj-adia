@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Shadows+Into+Light&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=12">
   <script>document.documentElement.className = "js";</script>
 </head>
 <body>
@@ -52,15 +52,23 @@
   <!-- Grote foto: verschijnt als je op een foto in de band klikt -->
   <div class="lichtbak" id="lichtbak" hidden>
     <button class="lichtbak-sluit" type="button" aria-label="Sluiten">&times;</button>
-    <figure class="lichtbak-polaroid">
-      <img id="lichtbak-foto" src="" alt="">
-    </figure>
+    <div class="lichtbak-vak">
+      <button class="lichtbak-pijl lichtbak-vorige" type="button" aria-label="Vorige foto">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.500 5l-7 7 7 7"/></svg>
+      </button>
+      <figure class="lichtbak-polaroid">
+        <img id="lichtbak-foto" src="" alt="">
+      </figure>
+      <button class="lichtbak-pijl lichtbak-volgende" type="button" aria-label="Volgende foto">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.500 5l7 7-7 7"/></svg>
+      </button>
+    </div>
   </div>
 
   <footer>
     <p class="voet-naam">Caspar Jan <span class="amp">&amp;</span> Adia</p>
   </footer>
 
-  <script src="script.js?v=10"></script>
+  <script src="script.js?v=12"></script>
 </body>
 </html>
