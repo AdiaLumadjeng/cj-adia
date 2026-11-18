@@ -7,6 +7,8 @@
 
 * { box-sizing: border-box; }
 
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   background: var(--groen);
@@ -17,9 +19,39 @@ body {
   text-align: center;
 }
 
+/* Navigatiebalk */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.2rem 1.5rem;
+  padding: 0.9rem 1rem;
+  background: var(--groen);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav a {
+  color: var(--wit);
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.nav a:hover,
+.nav a[aria-current="page"] {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
 /* Voorpagina */
 .hero {
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,6 +88,13 @@ body {
   margin: 0.2rem 0 2rem;
 }
 
+/* De & in een ander lettertype, want in het handschrift lijkt het een 3 */
+.amp {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  text-transform: none;
+}
+
 .place {
   font-size: 1.3rem;
   margin: 0;
@@ -77,6 +116,7 @@ main {
 section {
   padding: 3rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.3);
+  scroll-margin-top: 3.5rem; /* ruimte voor de navigatiebalk bij het springen */
 }
 
 h2 {
@@ -87,15 +127,25 @@ h2 {
   margin: 0 0 1rem;
 }
 
+h3 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 2rem 0 0.2rem;
+}
+
 a { color: var(--wit); text-underline-offset: 4px; }
 
-.facts {
+.facts,
+.timeline {
   list-style: none;
   padding: 0;
   margin: 1.5rem 0 0;
 }
 
-.facts span {
+.facts span,
+.timeline span {
   display: block;
   font-size: 0.8rem;
   letter-spacing: 0.15em;
@@ -104,9 +154,16 @@ a { color: var(--wit); text-underline-offset: 4px; }
   margin-top: 1rem;
 }
 
-.amp {
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
+/* Losse pagina's (programma, overnachten) */
+.page { padding-top: 3rem; }
+
+.page-title {
+  font-family: "Reenie Beanie", cursive;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(2.8rem, 10vw, 4.5rem);
+  line-height: 1.1;
+  margin: 0 0 1rem;
 }
 
 footer { padding: 2rem 0 3rem; }
