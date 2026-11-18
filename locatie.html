@@ -5,13 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Locatie | Caspar Jan &amp; Adia</title>
   <meta name="description" content="Caspar Jan en Adia gaan trouwen op 7 augustus 2027 op Landgoed Ullerberg in Ermelo.">
+  <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Shadows+Into+Light&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script>document.documentElement.className = "js";</script>
+  <script>
+    // Wachtwoordscherm: pagina blijft verborgen tot het wachtwoord is ingevuld
+    document.documentElement.className = "js";
+    try {
+      if (localStorage.getItem("cj-adia-open") !== "ja") {
+        document.documentElement.className += " vergrendeld";
+      }
+    } catch (fout) {
+      document.documentElement.className += " vergrendeld";
+    }
+  </script>
 </head>
 <body>
+
+  <div class="slot">
+    <form id="slotformulier">
+      <p class="voet-naam">Caspar Jan <span class="amp">&amp;</span> Adia</p>
+      <p>Vul het wachtwoord in om verder te gaan.</p>
+      <input type="password" id="wachtwoord" placeholder="Wachtwoord" autocomplete="off" aria-label="Wachtwoord">
+      <br>
+      <button class="knop" type="submit">Open</button>
+      <p id="slotfout" role="alert"></p>
+    </form>
+  </div>
 
   <nav class="nav">
       <a href="index.html#dag">De dag</a>
@@ -26,22 +48,28 @@
 
     <h1 class="page-title">Locatie</h1>
 
-    <div class="fotos reveal">
-      <img class="foto foto-links" src="images/locatie-2.jpg" alt="Heidepad met een hut in de verte">
-      <img class="foto foto-midden" src="images/locatie-1.jpg" alt="Houten hut met rieten dak op de heide">
-      <img class="foto foto-rechts" src="images/locatie-3.jpg" alt="Caspar Jan en Adia op de heide">
+    <!-- Collage: de foto's staan in drie kolommen. Nieuwe foto toevoegen? Kopieer een regel en pas de bestandsnaam aan. -->
+    <div class="collage reveal">
+      <img src="images/locatie-1.jpg" width="1050" height="1400" alt="Houten hut met rieten dak op de heide" loading="lazy">
+      <img src="images/locatie-2.jpg" width="1400" height="988" alt="Caspar Jan en Adia op de heide" loading="lazy">
+      <img src="images/locatie-7.jpg" width="900" height="1200" alt="Man op een bankje met een witte hond" loading="lazy">
+      <img src="images/locatie-6.jpg" width="816" height="1200" alt="Zandpad door het bos" loading="lazy">
+      <img src="images/locatie-8.jpg" width="858" height="1200" alt="Caspar Jan en Adia op de heide, in pak en gele jurk" loading="lazy">
+      <img src="images/locatie-4.jpg" width="904" height="1200" alt="Witte hond op de heide" loading="lazy">
+      <img src="images/locatie-3.jpg" width="1400" height="1050" alt="Heidepad met een hut in de verte" loading="lazy">
+      <img src="images/locatie-5.jpg" width="1200" height="900" alt="Twee mensen en een hond in de bloeiende heide" loading="lazy">
     </div>
 
     <div class="adres reveal">
-      <p>Landgoed Ullerberg</p>
-      <p>Ermelo</p>
-      <a class="knop" href="https://www.google.com/maps/search/?api=1&query=Landgoed+Ullerberg+Ermelo" target="_blank" rel="noopener">Route</a>
+      <p class="adres-naam">Landgoed Ullerberg</p>
+      <p>Jhr. Dr. C.J. Sandbergweg 97<br>3852 PT Ermelo</p>
+      <a class="knop" href="https://www.google.com/maps/search/?api=1&query=Jhr.+Dr.+C.J.+Sandbergweg+97+Ermelo" target="_blank" rel="noopener">Route</a>
     </div>
 
   </main>
 
   <footer>
-    <p class="script">Caspar Jan <span class="amp">&amp;</span> Adia</p>
+    <p class="voet-naam">Caspar Jan <span class="amp">&amp;</span> Adia</p>
   </footer>
 
   <script src="script.js"></script>

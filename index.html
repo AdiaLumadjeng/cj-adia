@@ -5,13 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Caspar Jan &amp; Adia | 7 augustus 2027</title>
   <meta name="description" content="Caspar Jan en Adia gaan trouwen op 7 augustus 2027 op Landgoed Ullerberg in Ermelo.">
+  <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Shadows+Into+Light&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script>document.documentElement.className = "js";</script>
+  <script>
+    // Wachtwoordscherm: pagina blijft verborgen tot het wachtwoord is ingevuld
+    document.documentElement.className = "js";
+    try {
+      if (localStorage.getItem("cj-adia-open") !== "ja") {
+        document.documentElement.className += " vergrendeld";
+      }
+    } catch (fout) {
+      document.documentElement.className += " vergrendeld";
+    }
+  </script>
 </head>
 <body>
+
+  <div class="slot">
+    <form id="slotformulier">
+      <p class="voet-naam">Caspar Jan <span class="amp">&amp;</span> Adia</p>
+      <p>Vul het wachtwoord in om verder te gaan.</p>
+      <input type="password" id="wachtwoord" placeholder="Wachtwoord" autocomplete="off" aria-label="Wachtwoord">
+      <br>
+      <button class="knop" type="submit">Open</button>
+      <p id="slotfout" role="alert"></p>
+    </form>
+  </div>
 
   <nav class="nav">
       <a href="index.html#dag" aria-current="page">De dag</a>
@@ -40,7 +62,6 @@
     <section id="dag" class="reveal">
       <h2>De dag</h2>
       <p>Op zaterdag 7 augustus 2027 gaan we trouwen. Meer details over het programma volgen.</p>
-      <p class="script aftellen" id="aftellen"></p>
       <ul class="facts">
         <li><span>Datum</span> Zaterdag 7 augustus 2027</li>
         <li><span>Locatie</span> Landgoed Ullerberg, Ermelo</li>
@@ -62,7 +83,7 @@
   </main>
 
   <footer>
-    <p class="script">Caspar Jan <span class="amp">&amp;</span> Adia</p>
+    <p class="voet-naam">Caspar Jan <span class="amp">&amp;</span> Adia</p>
   </footer>
 
   <script src="script.js"></script>

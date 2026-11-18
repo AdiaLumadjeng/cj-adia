@@ -1,4 +1,26 @@
-// 1. Blokjes laten verschijnen als je naar beneden scrolt
+// Wachtwoord: pas het hier aan. Hoofdletters maken niet uit.
+var WACHTWOORD = "cj&adia2027";
+
+var formulier = document.getElementById("slotformulier");
+
+if (formulier) {
+  formulier.addEventListener("submit", function (gebeurtenis) {
+    gebeurtenis.preventDefault();
+
+    var invoer = document.getElementById("wachtwoord").value.trim().toLowerCase();
+
+    if (invoer === WACHTWOORD.toLowerCase()) {
+      try {
+        localStorage.setItem("cj-adia-open", "ja");
+      } catch (fout) {}
+      document.documentElement.classList.remove("vergrendeld");
+    } else {
+      document.getElementById("slotfout").textContent = "Dat is niet het juiste wachtwoord.";
+    }
+  });
+}
+
+// Blokjes laten verschijnen als je naar beneden scrolt
 var blokjes = document.querySelectorAll(".reveal");
 
 if ("IntersectionObserver" in window) {
@@ -9,7 +31,7 @@ if ("IntersectionObserver" in window) {
         kijker.unobserve(item.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.1 });
 
   blokjes.forEach(function (blokje) {
     kijker.observe(blokje);
@@ -18,19 +40,4 @@ if ("IntersectionObserver" in window) {
   blokjes.forEach(function (blokje) {
     blokje.classList.add("zichtbaar");
   });
-}
-
-// 2. Aftellen naar de bruiloft (alleen op de voorpagina)
-var aftellen = document.getElementById("aftellen");
-
-if (aftellen) {
-  var bruiloft = new Date(2027, 7, 7); // maand 7 = augustus
-  var vandaag = new Date();
-  var dagen = Math.ceil((bruiloft - vandaag) / (1000 * 60 * 60 * 24));
-
-  if (dagen > 1) {
-    aftellen.textContent = "Nog " + dagen + " dagen";
-  } else if (dagen === 1) {
-    aftellen.textContent = "Nog 1 dag";
-  }
 }

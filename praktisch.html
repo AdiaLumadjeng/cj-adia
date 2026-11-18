@@ -5,13 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Praktische zaken | Caspar Jan &amp; Adia</title>
   <meta name="description" content="Caspar Jan en Adia gaan trouwen op 7 augustus 2027 op Landgoed Ullerberg in Ermelo.">
+  <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Shadows+Into+Light&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script>document.documentElement.className = "js";</script>
+  <script>
+    // Wachtwoordscherm: pagina blijft verborgen tot het wachtwoord is ingevuld
+    document.documentElement.className = "js";
+    try {
+      if (localStorage.getItem("cj-adia-open") !== "ja") {
+        document.documentElement.className += " vergrendeld";
+      }
+    } catch (fout) {
+      document.documentElement.className += " vergrendeld";
+    }
+  </script>
 </head>
 <body>
+
+  <div class="slot">
+    <form id="slotformulier">
+      <p class="voet-naam">Caspar Jan <span class="amp">&amp;</span> Adia</p>
+      <p>Vul het wachtwoord in om verder te gaan.</p>
+      <input type="password" id="wachtwoord" placeholder="Wachtwoord" autocomplete="off" aria-label="Wachtwoord">
+      <br>
+      <button class="knop" type="submit">Open</button>
+      <p id="slotfout" role="alert"></p>
+    </form>
+  </div>
 
   <nav class="nav">
       <a href="index.html#dag">De dag</a>
@@ -22,49 +44,40 @@
       <a href="index.html#contact">Contact</a>
   </nav>
 
-  <main class="page page-breed">
+  <main class="page">
 
     <h1 class="page-title">Praktische zaken</h1>
 
-    <div class="tegels">
-      <div class="tegel reveal">
-        <h3>Dresscode</h3>
-        <p>Volgt.</p>
-      </div>
-      <div class="tegel reveal">
-        <h3>Parkeren</h3>
-        <p>Volgt.</p>
-      </div>
-      <div class="tegel reveal">
-        <h3>Reizen</h3>
-        <p>Informatie over openbaar vervoer en eventueel vervoer vanaf het station volgt.</p>
-      </div>
-      <div class="tegel reveal">
-        <h3>Overnachten</h3>
-        <p>Tips voor slaapplekken in de buurt volgen.</p>
-      </div>
-      <div class="tegel reveal">
-        <h3>Kinderen</h3>
-        <p>Volgt.</p>
-      </div>
-      <div class="tegel reveal">
-        <h3>Cadeaus</h3>
-        <p>Volgt.</p>
-      </div>
-      <div class="tegel reveal">
-        <h3>Dieetwensen</h3>
-        <p>Dieetwensen kun je doorgeven bij je RSVP.</p>
-      </div>
-      <div class="tegel reveal breed">
-        <h3>Op de dag zelf</h3>
-        <p>Voor alle vragen waar je op de dag zelf terecht kunt, kun je zijn bij: telefoonnummer volgt.</p>
-      </div>
-    </div>
+    <section>
+      <h3>Dresscode</h3>
+      <p>Volgt.</p>
+
+      <h3>Parkeren</h3>
+      <p>Volgt.</p>
+
+      <h3>Reizen</h3>
+      <p>Informatie over openbaar vervoer en eventueel vervoer vanaf het station volgt.</p>
+
+      <h3>Overnachten</h3>
+      <p>Tips voor slaapplekken in de buurt volgen.</p>
+
+      <h3>Kinderen</h3>
+      <p>Volgt.</p>
+
+      <h3>Cadeaus</h3>
+      <p>Volgt.</p>
+
+      <h3>Dieetwensen</h3>
+      <p>Dieetwensen kun je doorgeven bij je RSVP.</p>
+
+      <h3>Op de dag zelf</h3>
+      <p>Voor alle vragen waar je op de dag zelf terecht kunt, kun je zijn bij: telefoonnummer volgt.</p>
+    </section>
 
   </main>
 
   <footer>
-    <p class="script">Caspar Jan <span class="amp">&amp;</span> Adia</p>
+    <p class="voet-naam">Caspar Jan <span class="amp">&amp;</span> Adia</p>
   </footer>
 
   <script src="script.js"></script>
