@@ -80,12 +80,18 @@ body {
 }
 
 .names {
-  font-family: "Shadows Into Light", cursive;
+  font-family: "Reenie Beanie", cursive;
   font-weight: 400;
   text-transform: uppercase;
-  font-size: clamp(2.2rem, 8vw, 4.2rem);
+  font-size: clamp(2.8rem, 10vw, 5.5rem);
   line-height: 1.1;
   margin: 0.2rem 0 2rem;
+}
+
+/* Alleen de &: ander handschrift, want in dit lettertype lijkt de & op een 3 */
+.amp {
+  font-family: "Shadows Into Light", cursive;
+  font-size: 0.75em;
 }
 
 .place {
@@ -94,8 +100,8 @@ body {
 }
 
 .script {
-  font-family: "Shadows Into Light", cursive;
-  font-size: 1.4rem;
+  font-family: "Reenie Beanie", cursive;
+  font-size: 1.8rem;
   margin: 0.2rem 0 0;
 }
 
@@ -151,10 +157,10 @@ a { color: var(--wit); text-underline-offset: 4px; }
 .page { padding-top: 3rem; }
 
 .page-title {
-  font-family: "Shadows Into Light", cursive;
+  font-family: "Reenie Beanie", cursive;
   font-weight: 400;
   text-transform: uppercase;
-  font-size: clamp(2.2rem, 8vw, 3.6rem);
+  font-size: clamp(2.8rem, 10vw, 4.5rem);
   line-height: 1.1;
   margin: 0 0 1rem;
 }
