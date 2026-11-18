@@ -228,21 +228,6 @@ footer .voet-naam {
   transform: none;
 }
 
-/* ---------- Programma ---------- */
-.item { margin-top: 2.2rem; }
-
-.item .icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 46px;
-  height: 46px;
-  border: 1.5px solid var(--bordeaux);
-  border-radius: 50%;
-}
-
-.item h3 { margin-top: 0.7rem; }
-
 /* ---------- Locatie ---------- */
 .page-vol {
   max-width: none;
@@ -258,37 +243,53 @@ footer .voet-naam {
 .page-vol .page-title { margin-bottom: 0.5rem; }
 
 /* Band met foto's over de hele breedte, zijwaarts scrollen als het niet past.
-   Elke foto heeft een dunne witte lijn eromheen en een andere hoogte.
-   Hoogte aanpassen? Verander de getallen bij height. */
+   Elke foto is een polaroid met een bordeaux lijn die iets naar links en
+   omlaag is verschoven. Hoogte aanpassen? Verander de getallen bij height. */
 .band {
   display: flex;
   align-items: center;
-  gap: 32px;
-  height: clamp(190px, 36vh, 350px);
+  gap: 34px;
+  height: clamp(200px, 37vh, 360px);
   margin: 0.8rem 0 1.2rem;
-  padding: 12px 32px;
+  padding: 10px 34px 22px;
   overflow-x: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
 }
 
-.band img {
+.foto {
+  position: relative;
   flex: none;
+  display: flex;
+  height: 100%;
+  padding: 11px 11px 30px;
+  background: #ffffff;
+}
+
+.foto img {
   display: block;
   height: 100%;
   width: auto;
-  outline: 1px solid rgba(255, 255, 255, 0.75);
-  outline-offset: 7px;
 }
 
-.band img:nth-child(8n+1) { height: 100%; }
-.band img:nth-child(8n+2) { height: 74%; }
-.band img:nth-child(8n+3) { height: 90%; }
-.band img:nth-child(8n+4) { height: 66%; }
-.band img:nth-child(8n+5) { height: 100%; }
-.band img:nth-child(8n+6) { height: 78%; }
-.band img:nth-child(8n+7) { height: 92%; }
-.band img:nth-child(8n+8) { height: 70%; }
+/* De bordeaux lijn: verschuif met de getallen bij translate (links, omlaag) */
+.foto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid var(--bordeaux);
+  transform: translate(-9px, 9px);
+  pointer-events: none;
+}
+
+.foto:nth-child(8n+1) { height: 100%; }
+.foto:nth-child(8n+2) { height: 78%; }
+.foto:nth-child(8n+3) { height: 92%; }
+.foto:nth-child(8n+4) { height: 70%; }
+.foto:nth-child(8n+5) { height: 100%; }
+.foto:nth-child(8n+6) { height: 80%; }
+.foto:nth-child(8n+7) { height: 94%; }
+.foto:nth-child(8n+8) { height: 72%; }
 
 .adres p {
   margin: 0;
