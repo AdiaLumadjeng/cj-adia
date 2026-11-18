@@ -1,8 +1,10 @@
-/* Kleuren uit de save the date */
+/* Kleuren */
 :root {
   --groen: #657764;
   --crème: #e8e4dc;
   --wit: #ffffff;
+  --bordeaux: #7a2c3a;
+  --tekst-op-bordeaux: #f3eee6;
 }
 
 * { box-sizing: border-box; }
@@ -17,6 +19,35 @@ body {
   font-weight: 300;
   line-height: 1.7;
   text-align: center;
+}
+
+/* Fijn korreltje over de hele pagina, voor een krijtachtig papiergevoel.
+   Te veel? Verwijder dit hele blok. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.09;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Handgeschreven delen: schuin, net als op de save the date */
+.names,
+.script,
+.page-title,
+.tegel h3 {
+  font-family: "Reenie Beanie", cursive;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* De & in een ander handschrift, want in dit lettertype lijkt hij op een 3 */
+.amp {
+  font-family: "Shadows Into Light", cursive;
+  font-size: 0.75em;
 }
 
 /* Navigatiebalk */
@@ -40,6 +71,7 @@ body {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   opacity: 0.8;
+  transition: opacity 0.2s;
 }
 
 .nav a:hover,
@@ -59,6 +91,18 @@ body {
   padding: 3rem 1.5rem;
 }
 
+.hero > * { animation: opkomst 0.9s ease both; }
+.hero > :nth-child(2) { animation-delay: 0.15s; }
+.hero > :nth-child(3) { animation-delay: 0.3s; }
+.hero > :nth-child(4) { animation-delay: 0.45s; }
+.hero > :nth-child(5) { animation-delay: 0.6s; }
+.hero > :nth-child(6) { animation-delay: 0.75s; }
+
+@keyframes opkomst {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+
 .small-caps {
   font-size: 1.6rem;
   letter-spacing: 0.04em;
@@ -71,7 +115,11 @@ body {
   height: auto;
   display: block;
   margin: 2rem 0;
+  rotate: -2deg;
+  transition: rotate 0.4s ease;
 }
+
+.polaroid:hover { rotate: 0deg; }
 
 .date {
   font-size: 1.8rem;
@@ -80,18 +128,10 @@ body {
 }
 
 .names {
-  font-family: "Reenie Beanie", cursive;
-  font-weight: 400;
   text-transform: uppercase;
   font-size: clamp(2.8rem, 10vw, 5.5rem);
   line-height: 1.1;
   margin: 0.2rem 0 2rem;
-}
-
-/* Alleen de &: ander handschrift, want in dit lettertype lijkt de & op een 3 */
-.amp {
-  font-family: "Shadows Into Light", cursive;
-  font-size: 0.75em;
 }
 
 .place {
@@ -100,9 +140,13 @@ body {
 }
 
 .script {
-  font-family: "Reenie Beanie", cursive;
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   margin: 0.2rem 0 0;
+}
+
+.aftellen {
+  font-size: 1.8rem;
+  margin: 0.5rem 0 0;
 }
 
 /* Rest van de pagina */
@@ -115,7 +159,7 @@ main {
 section {
   padding: 3rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.3);
-  scroll-margin-top: 3.5rem; /* ruimte voor de navigatiebalk bij het springen */
+  scroll-margin-top: 3.5rem;
 }
 
 h2 {
@@ -126,25 +170,15 @@ h2 {
   margin: 0 0 1rem;
 }
 
-h3 {
-  font-size: 0.9rem;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin: 2rem 0 0.2rem;
-}
-
 a { color: var(--wit); text-underline-offset: 4px; }
 
-.facts,
-.timeline {
+.facts {
   list-style: none;
   padding: 0;
   margin: 1.5rem 0 0;
 }
 
-.facts span,
-.timeline span {
+.facts span {
   display: block;
   font-size: 0.8rem;
   letter-spacing: 0.15em;
@@ -153,12 +187,11 @@ a { color: var(--wit); text-underline-offset: 4px; }
   margin-top: 1rem;
 }
 
-/* Losse pagina's (programma, overnachten) */
+/* Losse pagina's */
 .page { padding-top: 3rem; }
+.page-breed { max-width: 860px; }
 
 .page-title {
-  font-family: "Reenie Beanie", cursive;
-  font-weight: 400;
   text-transform: uppercase;
   font-size: clamp(2.8rem, 10vw, 4.5rem);
   line-height: 1.1;
@@ -166,3 +199,191 @@ a { color: var(--wit); text-underline-offset: 4px; }
 }
 
 footer { padding: 2rem 0 3rem; }
+
+/* Verschijnen bij scrollen (zonder JavaScript is alles gewoon zichtbaar) */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.js .reveal.zichtbaar {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Programma ---------- */
+.stops {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+}
+
+.tijd {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.naam { display: block; }
+
+/* Weergave 1: route (class="stops route") */
+.route li {
+  position: relative;
+  height: 130px;
+}
+
+.route li:last-child { height: 110px; }
+
+.route .icon {
+  position: absolute;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  margin-left: -22px;
+  border-radius: 50%;
+  background: var(--bordeaux);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.route .tekst {
+  position: absolute;
+  top: 52px;
+  width: 130px;
+  margin-left: -65px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.route li:nth-child(odd) .icon,
+.route li:nth-child(odd) .tekst { left: 18%; }
+
+.route li:nth-child(even) .icon,
+.route li:nth-child(even) .tekst { left: 82%; }
+
+/* De stippellijn tussen twee stops */
+.route li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: 18%;
+  width: 64%;
+  height: 130px;
+  border: 3px dashed rgba(255, 255, 255, 0.55);
+}
+
+.route li:nth-child(odd):not(:last-child)::after {
+  border-left: none;
+  border-bottom: none;
+  border-top-right-radius: 100% 100%;
+}
+
+.route li:nth-child(even):not(:last-child)::after {
+  border-right: none;
+  border-bottom: none;
+  border-top-left-radius: 100% 100%;
+}
+
+/* Weergave 2: gewone lijst (class="stops lijst") */
+.lijst .icon { display: none; }
+.lijst li { margin-top: 1.2rem; }
+
+/* ---------- Praktische zaken: tegels ---------- */
+.tegels {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 640px) {
+  .tegels { grid-template-columns: 1fr 1fr; }
+  .tegel.breed { grid-column: 1 / -1; }
+}
+
+.tegel {
+  background: var(--bordeaux);
+  color: var(--tekst-op-bordeaux);
+  padding: 1.8rem 1.4rem;
+  border-radius: 4px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  transition: rotate 0.3s ease;
+}
+
+.tegel:nth-child(odd)  { rotate: -0.8deg; }
+.tegel:nth-child(even) { rotate: 0.8deg; }
+.tegel:hover { rotate: 0deg; }
+.tegel.breed { rotate: 0deg; }
+
+.tegel h3 {
+  text-transform: uppercase;
+  font-size: 2.1rem;
+  line-height: 1.1;
+  margin: 0 0 0.5rem;
+}
+
+.tegel p { margin: 0; }
+
+/* ---------- Locatie ---------- */
+.fotos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin: 2.5rem 0;
+}
+
+.foto {
+  display: block;
+  object-fit: cover;
+  border: 8px solid var(--crème);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  transition: rotate 0.4s ease;
+}
+
+.foto-links  { width: 30%; aspect-ratio: 4 / 3; rotate: -3deg; }
+.foto-midden { width: 38%; aspect-ratio: 3 / 4; rotate: 1.5deg; }
+.foto-rechts { width: 30%; aspect-ratio: 4 / 3; rotate: 3deg; }
+.foto:hover  { rotate: 0deg; }
+
+@media (max-width: 639px) {
+  .fotos { flex-direction: column; }
+  .foto-links, .foto-midden, .foto-rechts { width: 80%; }
+}
+
+.adres p {
+  margin: 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.knop {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.7rem 2rem;
+  border: 1px solid var(--wit);
+  color: var(--wit);
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
+}
+
+.knop:hover {
+  background: var(--wit);
+  color: var(--groen);
+}
+
+/* Geen animaties voor wie dat liever niet heeft */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero > * { animation: none; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+}

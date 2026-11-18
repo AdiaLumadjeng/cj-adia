@@ -7,8 +7,9 @@
   <meta name="description" content="Caspar Jan en Adia gaan trouwen op 7 augustus 2027 op Landgoed Ullerberg in Ermelo.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Reenie+Beanie&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Shadows+Into+Light&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.className = "js";</script>
 </head>
 <body>
 
@@ -16,12 +17,12 @@
       <a href="index.html#dag" aria-current="page">De dag</a>
       <a href="programma.html">Programma</a>
       <a href="praktisch.html">Praktische zaken</a>
-      <a href="index.html#locatie">Locatie</a>
+      <a href="locatie.html">Locatie</a>
       <a href="index.html#rsvp">RSVP</a>
       <a href="index.html#contact">Contact</a>
   </nav>
 
-  <!-- 1. Voorpagina, zelfde opzet als de save the date -->
+  <!-- Voorpagina, zelfde opzet als de save the date -->
   <header class="hero">
     <p class="small-caps">Save the date</p>
 
@@ -34,12 +35,12 @@
     <p class="script">Officiële uitnodiging volgt</p>
   </header>
 
-  <!-- 2. Praktische informatie. Pas de tekst hieronder aan. -->
   <main>
 
-    <section id="dag">
+    <section id="dag" class="reveal">
       <h2>De dag</h2>
       <p>Op zaterdag 7 augustus 2027 gaan we trouwen. Meer details over het programma volgen.</p>
+      <p class="script aftellen" id="aftellen"></p>
       <ul class="facts">
         <li><span>Datum</span> Zaterdag 7 augustus 2027</li>
         <li><span>Locatie</span> Landgoed Ullerberg, Ermelo</li>
@@ -48,18 +49,12 @@
       </ul>
     </section>
 
-    <section id="locatie">
-      <h2>Locatie</h2>
-      <p>Landgoed Ullerberg, Ermelo.</p>
-      <p><a href="https://www.google.com/maps/search/?api=1&query=Landgoed+Ullerberg+Ermelo" target="_blank" rel="noopener">Bekijk op de kaart</a></p>
-    </section>
-
-    <section id="rsvp">
+    <section id="rsvp" class="reveal">
       <h2>RSVP</h2>
       <p>De officiële uitnodiging volgt. Daarin lees je hoe je je RSVP kunt doorgeven.</p>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="reveal">
       <h2>Vragen?</h2>
       <p>Mail ons via <a href="mailto:ellieschmellie@hotmail.com">ellieschmellie@hotmail.com</a>.</p>
     </section>
@@ -70,5 +65,6 @@
     <p class="script">Caspar Jan <span class="amp">&amp;</span> Adia</p>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
