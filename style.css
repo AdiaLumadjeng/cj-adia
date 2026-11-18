@@ -228,6 +228,21 @@ footer .voet-naam {
   transform: none;
 }
 
+/* ---------- Programma ---------- */
+.item { margin-top: 2.2rem; }
+
+.item .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1.5px solid var(--bordeaux);
+  border-radius: 50%;
+}
+
+.item h3 { margin-top: 0.7rem; }
+
 /* ---------- Locatie ---------- */
 .page-vol {
   max-width: none;
@@ -243,13 +258,15 @@ footer .voet-naam {
 .page-vol .page-title { margin-bottom: 0.5rem; }
 
 /* Band met foto's over de hele breedte, zijwaarts scrollen als het niet past.
+   Elke foto heeft een dunne witte lijn eromheen en een andere hoogte.
    Hoogte aanpassen? Verander de getallen bij height. */
 .band {
   display: flex;
-  gap: 10px;
-  height: clamp(170px, 34vh, 340px);
-  margin: 1rem 0 1.5rem;
-  padding: 0 10px;
+  align-items: center;
+  gap: 32px;
+  height: clamp(190px, 36vh, 350px);
+  margin: 0.8rem 0 1.2rem;
+  padding: 12px 32px;
   overflow-x: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
@@ -260,7 +277,18 @@ footer .voet-naam {
   display: block;
   height: 100%;
   width: auto;
+  outline: 1px solid rgba(255, 255, 255, 0.75);
+  outline-offset: 7px;
 }
+
+.band img:nth-child(8n+1) { height: 100%; }
+.band img:nth-child(8n+2) { height: 74%; }
+.band img:nth-child(8n+3) { height: 90%; }
+.band img:nth-child(8n+4) { height: 66%; }
+.band img:nth-child(8n+5) { height: 100%; }
+.band img:nth-child(8n+6) { height: 78%; }
+.band img:nth-child(8n+7) { height: 92%; }
+.band img:nth-child(8n+8) { height: 70%; }
 
 .adres p {
   margin: 0;
@@ -274,14 +302,14 @@ footer .voet-naam {
   margin-bottom: 0.4rem;
 }
 
-/* Knop in bordeaux */
+/* Knop: bordeaux omlijning */
 .knop {
   display: inline-block;
   margin-top: 1.5rem;
   padding: 0.7rem 2rem;
-  background: var(--bordeaux);
-  border: 1px solid var(--bordeaux);
-  color: var(--tekst-op-bordeaux);
+  background: transparent;
+  border: 1.5px solid var(--bordeaux);
+  color: var(--wit);
   font-family: inherit;
   font-size: 0.8rem;
   font-weight: 400;
@@ -328,15 +356,13 @@ html.vergrendeld footer { display: none; }
 
 /* Alles waar je op kunt klikken wordt bordeaux als je erover heen gaat */
 a {
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  transition: color 0.2s;
 }
 
 a:hover,
 .nav a:hover,
 .nav a[aria-current="page"]:hover {
-  background: var(--bordeaux);
-  color: var(--tekst-op-bordeaux);
-  box-shadow: 0 0 0 4px var(--bordeaux);
+  color: var(--bordeaux);
   opacity: 1;
 }
 
