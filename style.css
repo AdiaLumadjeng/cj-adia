@@ -165,6 +165,14 @@ h2 {
   margin: 0 0 1rem;
 }
 
+h3 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 2rem 0 0.2rem;
+}
+
 a { color: var(--wit); text-underline-offset: 4px; }
 
 .facts {
@@ -203,7 +211,10 @@ footer { padding: 2rem 0 3rem; }
   margin: 0 0 1rem;
 }
 
-footer .voet-naam { margin: 0; }
+footer .voet-naam {
+  font-size: 1.6rem;
+  margin: 0;
+}
 
 /* Verschijnen bij scrollen (zonder JavaScript is alles gewoon zichtbaar) */
 .js .reveal {
@@ -217,113 +228,38 @@ footer .voet-naam { margin: 0; }
   transform: none;
 }
 
-/* ---------- Programma ---------- */
-.stops {
-  list-style: none;
-  padding: 0;
-  margin: 2rem 0 0;
-}
-
-.tijd {
-  display: block;
-  font-size: 0.8rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  opacity: 0.75;
-}
-
-.naam { display: block; }
-
-/* Weergave 1: route (class="stops route") */
-.route li {
-  position: relative;
-  height: 130px;
-}
-
-.route li:last-child { height: 110px; }
-
-.route .icon {
-  position: absolute;
-  top: 0;
-  width: 44px;
-  height: 44px;
-  margin-left: -22px;
-  border-radius: 50%;
-  background: var(--bordeaux);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-}
-
-.route .tekst {
-  position: absolute;
-  top: 52px;
-  width: 130px;
-  margin-left: -65px;
-  text-align: center;
-  line-height: 1.4;
-}
-
-.route li:nth-child(odd) .icon,
-.route li:nth-child(odd) .tekst { left: 18%; }
-
-.route li:nth-child(even) .icon,
-.route li:nth-child(even) .tekst { left: 82%; }
-
-/* De stippellijn tussen twee stops */
-.route li:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: 22px;
-  left: 18%;
-  width: 64%;
-  height: 130px;
-  border: 3px dashed rgba(255, 255, 255, 0.55);
-}
-
-.route li:nth-child(odd):not(:last-child)::after {
-  border-left: none;
-  border-bottom: none;
-  border-top-right-radius: 100% 100%;
-}
-
-.route li:nth-child(even):not(:last-child)::after {
-  border-right: none;
-  border-bottom: none;
-  border-top-left-radius: 100% 100%;
-}
-
-/* Weergave 2: gewone lijst (class="stops lijst") */
-.lijst .icon { display: none; }
-.lijst li { margin-top: 1.2rem; }
-
-h3 {
-  font-size: 0.9rem;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin: 2rem 0 0.2rem;
-}
-
 /* ---------- Locatie ---------- */
-/* Collage in drie kolommen (twee op een telefoon) */
-.collage {
-  column-count: 3;
-  column-gap: 10px;
-  margin: 2.5rem 0;
+.page-vol {
+  max-width: none;
+  padding: 1.5rem 0 2rem;
 }
 
-.collage img {
+.binnen {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.page-vol .page-title { margin-bottom: 0.5rem; }
+
+/* Band met foto's over de hele breedte, zijwaarts scrollen als het niet past.
+   Hoogte aanpassen? Verander de getallen bij height. */
+.band {
+  display: flex;
+  gap: 10px;
+  height: clamp(170px, 34vh, 340px);
+  margin: 1rem 0 1.5rem;
+  padding: 0 10px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+}
+
+.band img {
+  flex: none;
   display: block;
-  width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-  break-inside: avoid;
-}
-
-@media (max-width: 639px) {
-  .collage { column-count: 2; }
+  height: 100%;
+  width: auto;
 }
 
 .adres p {
@@ -353,12 +289,6 @@ h3 {
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s;
-}
-
-.knop:hover {
-  background: #8f3646;
-  border-color: #8f3646;
 }
 
 /* ---------- Wachtwoordscherm ---------- */
@@ -394,6 +324,20 @@ html.vergrendeld footer { display: none; }
   min-height: 1.7em;
   margin: 1rem 0 0;
   font-size: 0.9rem;
+}
+
+/* Alles waar je op kunt klikken wordt bordeaux als je erover heen gaat */
+a {
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+a:hover,
+.nav a:hover,
+.nav a[aria-current="page"]:hover {
+  background: var(--bordeaux);
+  color: var(--tekst-op-bordeaux);
+  box-shadow: 0 0 0 4px var(--bordeaux);
+  opacity: 1;
 }
 
 /* Geen animaties voor wie dat liever niet heeft */
