@@ -9,31 +9,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Shadows+Into+Light&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script>
-    // Wachtwoordscherm: pagina blijft verborgen tot het wachtwoord is ingevuld
-    document.documentElement.className = "js";
-    try {
-      if (localStorage.getItem("cj-adia-open") !== "ja") {
-        document.documentElement.className += " vergrendeld";
-      }
-    } catch (fout) {
-      document.documentElement.className += " vergrendeld";
-    }
-  </script>
+  <link rel="stylesheet" href="style.css?v=4">
+  <script>document.documentElement.className = "js";</script>
 </head>
 <body>
-
-  <div class="slot">
-    <form id="slotformulier">
-      <p class="voet-naam">Caspar Jan <span class="amp">&amp;</span> Adia</p>
-      <p>Vul het wachtwoord in om verder te gaan.</p>
-      <input type="password" id="wachtwoord" placeholder="Wachtwoord" autocomplete="off" aria-label="Wachtwoord">
-      <br>
-      <button class="knop" type="submit">Open</button>
-      <p id="slotfout" role="alert"></p>
-    </form>
-  </div>
 
   <nav class="nav">
       <a href="index.html#dag">De dag</a>
@@ -72,6 +51,6 @@
     <p class="voet-naam">Caspar Jan <span class="amp">&amp;</span> Adia</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>
