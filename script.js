@@ -42,49 +42,30 @@ if ("IntersectionObserver" in window) {
   });
 }
 
-// Fotoband: met de muis op een foto kun je scrollen om te bepalen welk deel
-// van de foto je ziet (omhoog/omlaag en links/rechts). Is de rand van de foto
-// bereikt, dan scrolt gewoon de pagina of de band verder.
-var bandFotos = document.querySelectorAll(".band img");
+// Fotoband: klik op een foto om hem helemaal te zien, in een polaroid-lijst.
+// Sluiten kan met een klik ergens op het scherm, met het kruisje of met Esc.
+var lichtbak = document.getElementById("lichtbak");
+var lichtbakFoto = document.getElementById("lichtbak-foto");
 
-bandFotos.forEach(function (foto) {
-  var x = 50; // horizontale stand in procenten
-  var y = 50; // verticale stand in procenten
+function sluitLichtbak() {
+  if (!lichtbak) { return; }
+  lichtbak.hidden = true;
+  document.body.style.overflow = "";
+}
 
-  // Beginstand overnemen uit style="object-position: ..." als die er is
-  var begin = getComputedStyle(foto).objectPosition.split(" ");
-  if (begin.length === 2 && begin[0].indexOf("%") > -1 && begin[1].indexOf("%") > -1) {
-    x = parseFloat(begin[0]);
-    y = parseFloat(begin[1]);
-  }
+if (lichtbak && lichtbakFoto) {
+  document.querySelectorAll(".band img").forEach(function (foto) {
+    foto.addEventListener("click", function () {
+      lichtbakFoto.src = foto.src;
+      lichtbakFoto.alt = foto.alt;
+      lichtbak.hidden = false;
+      document.body.style.overflow = "hidden";
+    });
+  });
 
-  foto.addEventListener("wheel", function (gebeurtenis) {
-    var breedte = foto.clientWidth;
-    var hoogte = foto.clientHeight;
-    var nat = foto.naturalWidth || foto.width;
-    var nathoogte = foto.naturalHeight || foto.height;
-    if (!breedte || !hoogte || !nat || !nathoogte) { return; }
+  lichtbak.addEventListener("click", sluitLichtbak);
 
-    // Hoeveel pixels van de foto steken buiten het vakje uit?
-    var schaal = Math.max(breedte / nat, hoogte / nathoogte);
-    var extraX = nat * schaal - breedte;
-    var extraY = nathoogte * schaal - hoogte;
-
-    var factor = gebeurtenis.deltaMode === 1 ? 16 : 1;
-    var dx = gebeurtenis.deltaX * factor;
-    var dy = gebeurtenis.deltaY * factor;
-
-    var nieuwX = x;
-    var nieuwY = y;
-    if (extraX > 1 && dx !== 0) { nieuwX = Math.min(100, Math.max(0, x + (dx / extraX) * 100)); }
-    if (extraY > 1 && dy !== 0) { nieuwY = Math.min(100, Math.max(0, y + (dy / extraY) * 100)); }
-
-    // Niets meer te verschuiven: de pagina of band mag zelf scrollen
-    if (nieuwX === x && nieuwY === y) { return; }
-
-    gebeurtenis.preventDefault();
-    x = nieuwX;
-    y = nieuwY;
-    foto.style.objectPosition = x + "% " + y + "%";
-  }, { passive: false });
-});
+  document.addEventListener("keydown", function (gebeurtenis) {
+    if (gebeurtenis.key === "Escape") { sluitLichtbak(); }
+  });
+}

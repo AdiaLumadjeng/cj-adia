@@ -268,6 +268,7 @@ footer .voet-naam {
   object-fit: cover;
   object-position: center;
   scroll-snap-align: start;
+  cursor: zoom-in;
 }
 
 /* Op een telefoon: 2 foto's tegelijk, anders worden ze te smal */
@@ -301,6 +302,49 @@ footer .voet-naam {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-decoration: none;
+  cursor: pointer;
+}
+
+/* ---------- Grote foto (polaroid) ---------- */
+.lichtbak {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(30, 40, 30, 0.9);
+  cursor: pointer;
+}
+
+.lichtbak[hidden] { display: none; }
+
+.lichtbak-polaroid {
+  margin: 0;
+  padding: 14px 14px 48px; /* dikkere rand onderaan, zoals een polaroid */
+  background: #ffffff;
+}
+
+.lichtbak-polaroid img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: calc(100vw - 2rem - 28px);
+  max-height: calc(100vh - 2rem - 62px);
+  max-height: calc(100svh - 2rem - 62px);
+}
+
+.lichtbak-sluit {
+  position: absolute;
+  top: 0.6rem;
+  right: 1rem;
+  padding: 0.2rem 0.6rem;
+  background: none;
+  border: none;
+  color: var(--wit);
+  font-size: 2.4rem;
+  line-height: 1;
   cursor: pointer;
 }
 
