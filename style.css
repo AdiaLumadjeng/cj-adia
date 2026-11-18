@@ -104,4 +104,9 @@ a { color: var(--wit); text-underline-offset: 4px; }
   margin-top: 1rem;
 }
 
+.amp {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+}
+
 footer { padding: 2rem 0 3rem; }
