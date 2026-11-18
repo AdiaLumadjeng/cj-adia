@@ -80,19 +80,12 @@ body {
 }
 
 .names {
-  font-family: "Reenie Beanie", cursive;
+  font-family: "Shadows Into Light", cursive;
   font-weight: 400;
   text-transform: uppercase;
-  font-size: clamp(2.8rem, 10vw, 5.5rem);
+  font-size: clamp(2.2rem, 8vw, 4.2rem);
   line-height: 1.1;
   margin: 0.2rem 0 2rem;
-}
-
-/* De & in een ander lettertype, want in het handschrift lijkt het een 3 */
-.amp {
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
-  text-transform: none;
 }
 
 .place {
@@ -101,8 +94,8 @@ body {
 }
 
 .script {
-  font-family: "Reenie Beanie", cursive;
-  font-size: 1.8rem;
+  font-family: "Shadows Into Light", cursive;
+  font-size: 1.4rem;
   margin: 0.2rem 0 0;
 }
 
@@ -158,10 +151,10 @@ a { color: var(--wit); text-underline-offset: 4px; }
 .page { padding-top: 3rem; }
 
 .page-title {
-  font-family: "Reenie Beanie", cursive;
+  font-family: "Shadows Into Light", cursive;
   font-weight: 400;
   text-transform: uppercase;
-  font-size: clamp(2.8rem, 10vw, 4.5rem);
+  font-size: clamp(2.2rem, 8vw, 3.6rem);
   line-height: 1.1;
   margin: 0 0 1rem;
 }
